@@ -146,5 +146,5 @@ gem 'concurrent-ruby', '1.3.4'
 ### 4. Links
 * [Installing Redmine](https://www.redmine.org/projects/redmine/wiki/RedmineInstall)
 * [setup Oracle Linux 9.1 for wsl2 on windows11](https://end0tknr.hateblo.jp/entry/20240102/1704150817#install-Oracle-Linux-91)
-* [install ruby](https://www.server-world.info/query?os=CentOS_Stream_8&p=ruby&f=8)
-
+* [Ruby 3.1 : インストール](https://www.server-world.info/query?os=CentOS_Stream_8&p=ruby&f=8)
+* [bundlerでgemをプロジェクトごとに管理する](https://dev.classmethod.jp/articles/bundler-gem-management/)
