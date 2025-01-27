@@ -11,7 +11,7 @@ bundle install --local
 ## Reference
 ### 1. How to make this
 * rubygems.orgに接続できるオンライン環境で一度Redmineを構築する
-* bundle package を実行して、必要となるgem(s)をvendor/cacheにまとめる
+* `bundle package` を実行して、必要となるgem(s)をvendor/cacheにまとめる
 
 ### 2. How to install Redmine on an "ONLINE environment"
 
@@ -37,7 +37,7 @@ sudo yum install -y bzip2 gcc openssl-devel readline-devel zlib-devel unzip
 sudo yum groupinstall -y "Development Tools"
 ```
 
-#### ●Ruby 3のインストール
+#### ●Ruby 3.0のインストール
 ```bash
 sudo dnf module -y reset ruby
 sudo dnf module -y enable ruby:3.0
@@ -86,8 +86,8 @@ production:
 
 #### ●[Optional] MySQLライブラリのインストール
 * 実際には使わないが、いざMySQLを使う際に必要となるgem(s)を持っておきたかったので実施した内容
-* database.yml内にMySQL向けのエントリが存在している状態でbundle installする必要がある
-* MySQLを使わないなら、bundle installの実施後にMySQL向けのエントリをdatabase.xmlから削除すること
+* `database.yml`内にMySQL向けのエントリが存在している状態で`bundle install`する必要がある
+* MySQLを使わないなら、`bundle install`の実施後にMySQL向けのエントリを`database.xml`から削除すること
 ```bash
 sudo yum install -y mysql-devel
 ```
@@ -114,21 +114,22 @@ bundle install --local
 ```
 
 #### ●Redmineの設定/起動
-[Redmine公式のインストール手順](https://www.redmine.org/projects/redmine/wiki/RedmineInstall)のStep 5以降を実施する
+[Redmine公式のインストール手順][Installing Redmine]のStep 5以降を実施する
 
 
 ### 3. Additional Info
 * 今回対象とした環境
-  * [Redmine公式のインストール手順](https://www.redmine.org/projects/redmine/wiki/RedmineInstall)では
+  * [Redmine公式のインストール手順][Installing Redmine] では
   	下記のようにdevelopment/testの環境を除外するが、より広範にgem(s)を収集するために下記コマンドを実施していない
 ```bash
 bundle config set --local without 'development test'
 ```
 * concurrent-ruby-1.3.5の不具合
-  * 2025年1月26日現在の最新であるconcurrent-ruby-1.3.5には不具合があり、Redmine公式のインストール手順の「Step 5 - Session store secret generation」が失敗する 
-	([参考リンク](https://qiita.com/Taira0222/items/89fe772eb8d752da4db7))
-  * このため、今回のgem(s)収集に際しては、バージョンを1.3.4に指定する行をRedmineのGemfileに追加してbundle installを行った
-```
+  * 2025年1月26日現在の最新であるconcurrent-ruby-1.3.5には不具合があり、
+	[Redmine公式のインストール手順][Installing Redmine]の「Step 5 - Session store secret generation」が失敗する 
+	([参考リンク][concurrentruby])
+  * このため、今回のgem(s)収集に際しては、バージョンを1.3.4に指定する行をRedmineのGemfileに追加して`bundle install`を行った
+```bash
 gem 'concurrent-ruby', '1.3.4'
 ```
 
@@ -144,7 +145,11 @@ gem 'concurrent-ruby', '1.3.4'
 
 
 ### 4. Links
-* [Installing Redmine](https://www.redmine.org/projects/redmine/wiki/RedmineInstall)
 * [setup Oracle Linux 9.1 for wsl2 on windows11](https://end0tknr.hateblo.jp/entry/20240102/1704150817#install-Oracle-Linux-91)
 * [Ruby 3.1 : インストール](https://www.server-world.info/query?os=CentOS_Stream_8&p=ruby&f=8)
 * [bundlerでgemをプロジェクトごとに管理する](https://dev.classmethod.jp/articles/bundler-gem-management/)
+
+[Installing Redmine]: https://www.redmine.org/projects/redmine/wiki/RedmineInstall
+[concurrentruby]: https://qiita.com/Taira0222/items/89fe772eb8d752da4db7
+
+
