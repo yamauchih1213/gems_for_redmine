@@ -86,7 +86,7 @@ production:
 
 #### ●[Optional] MySQLライブラリのインストール
 * 実際には使わないが、いざMySQLを使う際に必要となるgem(s)を持っておきたかったので実施した内容
-* 「database.yml内にMySQL向けのエントリが存在している状態でbundle installする必要がある
+* database.yml内にMySQL向けのエントリが存在している状態でbundle installする必要がある
 * MySQLを使わないなら、bundle installの実施後にMySQL向けのエントリをdatabase.xmlから削除すること
 ```bash
 sudo yum install -y mysql-devel
@@ -127,7 +127,7 @@ bundle config set --local without 'development test'
 * concurrent-ruby-1.3.5の不具合
   * 2025年1月26日現在の最新であるconcurrent-ruby-1.3.5には不具合があり、Redmine公式のインストール手順の「Step 5 - Session store secret generation」が失敗する 
 	([参考リンク](https://qiita.com/Taira0222/items/89fe772eb8d752da4db7))
-  * このため、今回のgem(s)収集に際しては、バージョンを1.3.4に指定する行をGemfileに追加してbundle installを行った
+  * このため、今回のgem(s)収集に際しては、バージョンを1.3.4に指定する行をRedmineのGemfileに追加してbundle installを行った
 ```
 gem 'concurrent-ruby', '1.3.4'
 ```
